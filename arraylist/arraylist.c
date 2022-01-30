@@ -1,10 +1,3 @@
-/*
- * ArrayList.c
- *
- *  Created on: Jan 19, 2022
- *      Author: luca
-*/
-
 #include <stdlib.h>
 #include <stdbool.h>
 #include <signal.h>

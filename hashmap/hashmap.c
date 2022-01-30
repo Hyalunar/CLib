@@ -1,10 +1,3 @@
-/*
- * HashMap.c
- *
- *  Created on: Jan 23, 2022
- *      Author: Sleppo04
-*/
-
 #include <string.h>
 #include "hashmap.h"
 #include <stdlib.h>

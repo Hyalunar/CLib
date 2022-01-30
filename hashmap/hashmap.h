@@ -1,9 +1,3 @@
-/*
- * HashMap.h
- *
- *  Created on: Jan 23, 2022
- *      Author: Sleppo04
-*/
 #include "../utils/types.h"
 #include <stdbool.h>
 
