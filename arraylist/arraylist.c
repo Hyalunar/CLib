@@ -223,6 +223,7 @@ void* ArrayList_get(arraylist_t* list, int index)
 	} else
 	{
 		raise(SIGSEGV);
+		return NULL;
 	}
 }
 
@@ -236,5 +237,6 @@ void* ArrayList_pop(arraylist_t* list, int index)
 		return val;
 	} else {
 		raise(SIGSEGV);
+		return NULL;
 	}
 }

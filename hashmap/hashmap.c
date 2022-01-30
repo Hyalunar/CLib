@@ -17,6 +17,8 @@ bit128_t _generate_bit128Key()
 		byte4Rand = rand();
 		memcpy(bitKeyLocation + i * sizeof(int), &byte4Rand, sizeof(int));
 	}
+	bitKey.first = 0;
+	bitKey.second = 1;
 	return bitKey;
 }
 
