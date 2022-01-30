@@ -32,8 +32,7 @@ int main()
 	HashMapRemove(map, key2, 2);
 	assert(HashMapItemCount(map) == 64515);
 	assert(! HashMapHasKey(map, key2, 2));
-	printf("%f \n", ((double) (clock() - startTime)) / CLOCKS_PER_SEC);
-	printf("%i \n", HashMapGetUsedBuckets(map));
+	printf("%li, %li", map->hashKey.first, map->hashKey.second);
 	HashMapFree(map);
 	free(key2);
 }

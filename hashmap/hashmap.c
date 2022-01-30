@@ -17,9 +17,6 @@ bit128_t _generate_bit128Key()
 		byte4Rand = rand();
 		memcpy(bitKeyLocation + i * sizeof(int), &byte4Rand, sizeof(int));
 	}
-	//TODO: Remove Debug Code
-	bitKey.first = 0;
-	bitKey.second = 1;
 	return bitKey;
 }
 
@@ -144,34 +141,32 @@ int HashMapRemove_(hashmap_t* hashMap, unsigned char* key, unsigned int keyLengt
 		previousNode = node;
 		node = node->next;
 	}
-	if(node->next) {
-		//Node has a follower node
-		free(node->key);
-		node->key = NULL;
-		if (freeValue) {
-			free(node->value);
-			node->value = NULL;
-		}
-		if (previousNode) {
+	if(freeValue) {
+		free(node->value);
+		node->value = NULL;
+	}
+	free(node->key);
+	node->key = NULL;
+	node->keyLength = 0;
+	if (previousNode) {
+		if (node->next) {
 			previousNode->next = node->next;
-			free(node);
+		} else {
+			previousNode->next = NULL;
 		}
+		free(node);
 		return 1;
 	} else {
-		/* Node hasn't got a follower node. */
-		free(node->key);
-		if (freeValue) {
-			free(node->value);
-			node->value = NULL;
-		}
-		node->key = NULL;
-		if (previousNode) {
-			free(node);
-			previousNode->next = NULL;
+		if (node->next) {
+			node->key = node->next->key;
+			node->keyLength = node->next->keyLength;
+			node->value = node->next->value;
+			hashmapentry_t* nextNode = node->next;
+			node->next = nextNode->next;
+			free(nextNode);
 		}
 		return 1;
 	}
-	return 0;
 }
 
 int HashMapRemove(hashmap_t* hashMap, unsigned char* key, unsigned int keyLength) {
