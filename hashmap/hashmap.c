@@ -235,6 +235,26 @@ void HashMapFree_(hashmap_t* hashMap, bool freeValues)
 	return;
 }
 
-void HashMapFree(hashmap_t* hashMap) {
+void HashMapFree(hashmap_t* hashMap)
+{
 	HashMapFree_(hashMap, true);
 }
+
+int HashMapItemCount(hashmap_t* hashMap)
+{
+	int count = 0;
+	for (int bucket_idx = 0; bucket_idx < hashMap->capacity; bucket_idx++) {
+		hashmapentry_t* node = hashMap->buckets + bucket_idx;
+		while (node->key) {
+			count++;
+			if (node->next) {
+				node = node->next;
+			} else {
+				break;
+			}
+		}
+	}
+	return count;
+}
+
+

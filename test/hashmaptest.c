@@ -28,9 +28,11 @@ int main()
 		}
 	}
 
+	assert(HashMapItemCount(map) == 64516);
 	key2[0] = 'a';
 	key2[1] = 'b';
 	HashMapRemove(map, key2, 2);
+	assert(HashMapItemCount(map) == 64515);
 	assert(! HashMapHasKey(map, key2, 2));
 	printf("%f \n", ((double) (clock() - startTime)) / CLOCKS_PER_SEC);
 	printf("%i \n", HashMapGetUsedBuckets(map));

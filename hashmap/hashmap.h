@@ -31,6 +31,7 @@ int HashMapSet_(hashmap_t* hashMap, unsigned char* key, unsigned int keyLength, 
 int HashMapRemove(hashmap_t* hashMap, unsigned char* key, unsigned int keyLength);
 int HashMapRemove_(hashmap_t* hashMap, unsigned char* key, unsigned int keyLength, bool freeValue);
 void HashMapFree(hashmap_t* hashMap);
+int HashMapItemCount(hashmap_t* hashMap);
 // ===UTILS====
 
 
