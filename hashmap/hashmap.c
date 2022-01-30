@@ -188,7 +188,7 @@ int HashMapSet_(hashmap_t* hashMap, unsigned char* key, unsigned int keyLength, 
 	hashmapentry_t* node = HashMap_getBucketNode(hashMap, key, keyLength);
 	while(node->key) {
 		if(keyEquality(key, keyLength, node->key, node->keyLength)) {
-			if (free) free(node->value);
+			if (freeValue) free(node->value);
 			node->value = value;
 			return 1;
 		}

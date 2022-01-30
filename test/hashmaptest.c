@@ -6,8 +6,6 @@
 
 int main()
 {
-
-
 	hashmap_t* map = HashMapNewCapacity(65000);
 
 	clock_t startTime = clock();
