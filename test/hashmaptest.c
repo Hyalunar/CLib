@@ -8,7 +8,6 @@ int main()
 {
 	hashmap_t* map = HashMapNewCapacity(65000);
 
-	clock_t startTime = clock();
 	unsigned char* key2 = calloc(2, sizeof(char));
 	for (key2[0] = 0; key2[0] != 254; (key2[0])++) {
 		for(key2[1] = 0; key2[1] != 254; (key2[1])++) {
