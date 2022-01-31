@@ -32,6 +32,7 @@ int HashMapRemove(hashmap_t* hashMap, unsigned char* key, unsigned int keyLength
 int HashMapRemove_(hashmap_t* hashMap, unsigned char* key, unsigned int keyLength, bool freeValue);
 void HashMapFree(hashmap_t* hashMap);
 int HashMapItemCount(hashmap_t* hashMap);
+int HashMapResize(hashmap_t** hasMap, int size);
 // ===UTILS====
 
 

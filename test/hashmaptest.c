@@ -31,8 +31,8 @@ int main()
 	key2[1] = 'b';
 	HashMapRemove(map, key2, 2);
 	assert(HashMapItemCount(map) == 64515);
-	assert(! HashMapHasKey(map, key2, 2));
-	printf("%li, %li", map->hashKey.first, map->hashKey.second);
+	assert(! HashMapHasKey(map, key2, 100000));
+	HashMapResize(&map, 2);
 	HashMapFree(map);
 	free(key2);
 }

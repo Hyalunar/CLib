@@ -255,4 +255,24 @@ int HashMapItemCount(hashmap_t* hashMap)
 	return count;
 }
 
+int HashMapResize(hashmap_t** hashMap, int size)
+{
+	hashmap_t* newMap = HashMapNewCapacity(size);
+	for (int i = 0; i < (*hashMap)->capacity; i++) {
+		hashmapentry_t* node = (*hashMap)->buckets + i;
+		while (node->key) {
+			HashMapPut(newMap, node->key, node->keyLength, node->value);
+			if (node->next) {
+				node = node->next;
+			} else {
+				break;
+			}
+		}
+	}
+	HashMapFree_(*hashMap, false);
+	*(hashMap) = newMap;
+	return 1;
+}
+
+
 
