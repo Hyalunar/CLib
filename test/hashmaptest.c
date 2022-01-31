@@ -32,7 +32,7 @@ int main()
 	HashMapRemove(map, key2, 2);
 	assert(HashMapItemCount(map) == 64515);
 	assert(! HashMapHasKey(map, key2, 100000));
-	HashMapResize(&map, 2);
+	HashMapResize(&map, 100000);
 	HashMapFree(map);
 	free(key2);
 }
