@@ -5,7 +5,7 @@
 #include <assert.h>
 #include "../siphash/siphash.c"
 
-int main()
+int siphashtest()
 {
 	bit128_t hashkey;
 	hashkey.first  = 0x0706050403020100;

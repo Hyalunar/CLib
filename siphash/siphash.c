@@ -56,7 +56,6 @@ void siphash_compress(int c, char* value, unsigned int valueLength, uint64_t* wo
 	uint64_t* byteString  = (uint64_t*) value;
 	int       wordcount   = (valueLength + 1 ) / 8;
 	uint64_t  lastWord    = 0;
-	char      lastByte;
 	uint64_t  current;
 	
 	for (int i = 0; i < wordcount - 1; i++) {

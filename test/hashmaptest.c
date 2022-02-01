@@ -4,7 +4,7 @@
 #include <time.h>
 #include <stdio.h>
 
-int main()
+int hashtest()
 {
 	hashmap_t* map = HashMapNewCapacity(65000);
 
