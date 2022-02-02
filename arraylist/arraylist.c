@@ -233,7 +233,7 @@ void* ArrayList_pop(arraylist_t* list, int index)
 	if(index >= 0 && index < list->size)
 	{
 		void* val = ArrayList_get(list, index);
-		ArrayList_remove(list, index);
+		ArrayList_remove_nofree(list, index);
 		return val;
 	} else {
 		raise(SIGSEGV);

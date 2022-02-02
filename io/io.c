@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -24,4 +23,17 @@ char* readLine(char* prompt)
 	}
 	inputString[pos - 1] = '\0';
 	return inputString;
+}
+
+char* readFile(FILE* file)
+{
+	fseek(file, 0, SEEK_END);
+	int capacity = ftell(file) + 1;
+	fseek(file, 0, SEEK_SET);
+	int pos = 0;
+	char* fileString = malloc(sizeof(char) * capacity);
+	if (!fileString) return NULL;
+	int res = fread(fileString, capacity, 1, file);
+	fileString[pos] = 0;
+	return fileString;
 }
