@@ -8,9 +8,15 @@
 arraylist_t* ArrayList_new_capacity(int initialcapacity)
 {
 	arraylist_t* new_list = malloc(sizeof(arraylist_t));
+	if (!new_list) return NULL;
 	new_list->capacity = initialcapacity;
 	new_list->size = 0;
+	new_list->array = NULL;
 	new_list->array = malloc(sizeof(void*) * new_list->capacity);
+	if (new_list->array == NULL) {
+		free(new_list);
+		return NULL;
+	}
 	return new_list;
 }
 

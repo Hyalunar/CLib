@@ -1,7 +1,11 @@
-#ifndef IO_H
-#define IO_H
+#ifndef DEFAULTIO_H
+#define DEFAULTIO_H
 
-char* readLine(char* prompt);
+#include <stdbool.h>
+
+char* readLine(const char* prompt);
 char* readFile(FILE* file);
+char* nextLineStart(char* src);
+void* tryAlloc(int size, int fail, const char* prompt);
 
 #endif

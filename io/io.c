@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "io.h"
 
-char* readLine(char* prompt)
+char* readLine(const char* prompt)
 {
 	int capacity = 100;
 	int pos = 0;
@@ -30,10 +31,29 @@ char* readFile(FILE* file)
 	fseek(file, 0, SEEK_END);
 	int capacity = ftell(file) + 1;
 	fseek(file, 0, SEEK_SET);
-	int pos = 0;
 	char* fileString = malloc(sizeof(char) * capacity);
 	if (!fileString) return NULL;
-	int res = fread(fileString, capacity, 1, file);
-	fileString[pos] = 0;
+	int res = fread(fileString, capacity - 1, 1, file);
+	if (res != 1) {
+		free(fileString);
+		return NULL;
+	}
 	return fileString;
+}
+
+char* nextLineStart(char* src) {
+	while ((*src) != '\n' && (*src) != '\0') {
+		src++;
+	}
+	src++;
+	return src;
+}
+
+void* tryMalloc(int size, int failV, const char* prompt) {
+	void* memPtr = malloc(size);
+	if (!memPtr && failV) {
+		printf("%s", prompt);
+		exit(failV);
+	}
+	return memPtr;
 }
