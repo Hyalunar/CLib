@@ -12,7 +12,6 @@ bit128_t _generate_bit128Key()
 	bit128_t bitKey;
 	unsigned char* bitKeyLocation = (unsigned char*) &bitKey;
 	int byte4Rand;
-	srand(time(0));
 	for (int i = 0; i < (16 / sizeof(int)); i++) {
 		byte4Rand = rand();
 		memcpy(bitKeyLocation + i * sizeof(int), &byte4Rand, sizeof(int));
@@ -93,9 +92,11 @@ int HashMapPut(hashmap_t* hashMap, unsigned char* key, unsigned int keyLength, v
 		return 1;
 	} else {
 		//There is no node in this bucket
-		hashmapentry_t* new_node = HashMapEntryNew(key, keyLength, value);
-		*node = *new_node;
-		free(new_node);
+		node->key = malloc(sizeof(unsigned char) * keyLength);
+		memcpy(node->key, key, sizeof(unsigned char) * keyLength);
+		node->keyLength = keyLength;
+		node->value = value;
+		node->next = NULL;
 		return 1;
 	}
 	return -2;
