@@ -3,8 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
+#include <string.h>
 
-int hashtest()
+int main()
 {
 	hashmap_t* map = HashMapNewCapacity(65000);
 
@@ -30,7 +31,13 @@ int hashtest()
 	key2[1] = 'b';
 	HashMapRemove(map, key2, 2);
 	assert(HashMapItemCount(map) == 64515);
-	assert(! HashMapHasKey(map, key2, 100000));
+
+	unsigned char* long_key = malloc(sizeof(char) * 100000);
+	memset(long_key, 0xDEADBEEF, 100000);
+	assert(! HashMapHasKey(map, long_key, 100000));
+	free(long_key);
+
+
 	HashMapResize(&map, 100000);
 	HashMapFree(map);
 	free(key2);
