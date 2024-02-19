@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <signal.h>
+#include <stdint.h>
 
 #ifndef SRC_ARRAYLIST_ARRAYLIST_H_
 #define SRC_ARRAYLIST_ARRAYLIST_H_
@@ -28,7 +29,7 @@
 typedef struct ArrayList
 {
 	void** array;
-	int size;
+	uint32_t size;
 	int capacity;
 } arraylist_t;
 

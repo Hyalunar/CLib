@@ -3,6 +3,7 @@
 #include <signal.h>
 //TODO Change implementation to remove Signal
 #include "arraylist.h"
+#include <stdio.h>
 
 
 arraylist_t* ArrayList_new_capacity(int initialcapacity)
@@ -228,7 +229,7 @@ void* ArrayList_get(arraylist_t* list, int index)
 		return list->array[index];
 	} else
 	{
-		raise(SIGSEGV);
+		printf("... \n");
 		return NULL;
 	}
 }
