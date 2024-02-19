@@ -3,7 +3,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+#ifndef ROTATE
 #define ROTATE(b, n) ((b) << n | (b) >> (64 - n))
+#endif
 
 void siphash_initialize(bit128_t* key, uint64_t* words)
 {
